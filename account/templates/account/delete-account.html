@@ -1,0 +1,82 @@
+
+
+{% include "store/base.html" %}
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+
+    <style>
+
+
+        body{
+
+
+            background-color: gray;
+
+        }
+
+
+
+    </style>
+
+
+
+
+    <body>
+
+        <br>
+
+        <div class="container bg-white shadow-md p-5 form-layout">
+
+            <h3> Account detection </h3>
+
+            <hr>
+            <p> Are you sure that you want to delete your account? </p>
+
+           
+
+            <form method="POST" autocomplete="off">
+
+                {% csrf_token %}
+
+                <button type="submit" class="btn btn-danger navbar-btn text-white w-100 p-2"> <i class="fa fa-key" aria-hidden="true"></i> &nbsp; Delete your account </button>
+
+                <br> <br>
+                <a class="btn btn-primary navbar-btn text-white" type="button"  href="{% url 'profile-management' %}"><i class="fa fa-arrow-left" aria-hidden="true"></i> &nbsp; Go back </a>
+
+
+                {{form.non_field_errors}}
+
+                <div class="text-center">
+
+                    <a href="{% url 'register' %}"> Don't have an account? </a>
+
+
+                    <br> <br>
+
+                    {% comment %} <a href="{% url 'reset_password' %}"> Forgotten your password? </a> {% endcomment %}
+
+
+                </div>
+
+
+            </form>
+
+
+
+
+
+        </div>
+
+
+
+    </body>
+
+    <br> <br>
+
+
+{% endblock %}

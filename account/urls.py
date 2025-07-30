@@ -2,36 +2,58 @@ from django.urls import path
 
 from . import views
 
+
 from django.contrib.auth import views as auth_views
+
+
+
 
 urlpatterns = [
 
-    path('register',views.register, name='register'),
-    
-    # Email verification URL
-    path('email-verification/<str:uidb64>/<str:token>/',views.email_verification,name='email-verification'),
 
-    path('email-verification-sent',views.email_verification_sent,name='email-verification-sent'),
+    path('register', views.register, name='register'),
 
-    path('email-verification-success',views.email_verification_success,name='email-verification-success'),
-    
-    path('email-verification-failed',views.email_verification_failed,name='email-verification-failed'),
 
-    # login / Logout urls
+    # Email verification URL's
 
-    path('my-login',views.my_login,name='my-login'),
+    path('email-verification/<str:uidb64>/<str:token>/', views.email_verification, name='email-verification'),
 
-    path('user-logout',views.user_logout,name='user-logout'),
-    # dashboard / profile urls
 
-    path('dashboard',views.dashboard, name='dashboard'),
-    path('profile-management',views.profile_management, name='profile-management'),
+    path('email-verification-sent', views.email_verification_sent, name='email-verification-sent'),
 
-    path('delete-account',views.delete_account, name='delete-account'),
+
+    path('email-verification-success', views.email_verification_success, name='email-verification-success'),
+
+
+    path('email-verification-failed', views.email_verification_failed, name='email-verification-failed'),
+
+
+
+    # Login / logout urls
+
+    path('my-login', views.my_login, name='my-login'),
+
+
+    path('user-logout', views.user_logout, name='user-logout'),
+
+
+
+
+    # Dashboard / profile urls
+
+    path('dashboard', views.dashboard, name='dashboard'),
+
+    path('profile-management', views.profile_management, name='profile-management'),
+
+    path('delete-account', views.delete_account, name='delete-account'),
+
 
 
     # Password management urls/views
-   # 1 ) Submit our email form
+
+
+
+    # 1 ) Submit our email form
 
     path('reset_password', auth_views.PasswordResetView.as_view(template_name="account/password/password-reset.html"), name='reset_password'),
 
@@ -52,9 +74,18 @@ urlpatterns = [
 
 
 
-
     # Manage shipping url
-    path('manage-shipping',views.manage_shipping,name='manage-shipping'),
 
+    path('manage-shipping', views.manage_shipping, name='manage-shipping'),
+
+
+    # Track orders url
+
+    path('track-orders', views.track_orders, name='track-orders'),
 
 ]
+
+
+
+
+
